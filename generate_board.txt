@@ -1,0 +1,162 @@
+
+var block_pxls = 8;
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+var total_x_blocks = parseInt(w/block_pxls);
+var total_y_blocks = parseInt(h/block_pxls);
+var total_x_blocks = 200;
+var total_y_blocks = 200;
+var w_middle = parseInt((total_x_blocks)/2);
+var h_middle = parseInt((total_y_blocks)/2);
+var current_block;
+var ant = $("#ant")
+var board = $("#board")
+var all = $("#all")
+var ant_speed = 10;
+
+var pause = false;
+
+var canvas = $("canvas");
+
+var ant_dir = directions.DOWN;
+var ant_pos = [h_middle*block_pxls, w_middle*block_pxls];
+
+window.onload = function() {
+
+    generate_board()
+
+    canvas.css("width", w-10);
+    canvas.css("height", h-10);
+
+};
+
+function generate_board(){
+
+    all.css("width", (total_x_blocks*block_pxls)+"px");
+    all.css("height", (total_y_blocks*block_pxls)+"px");
+
+    var str_board = "";
+
+    ant.css("top", ant_pos[0])
+    ant.css("left", ant_pos[1])
+
+    for(var x = 0; x < total_y_blocks; x++){
+
+        str_board += "<div class='row'>";
+        for(var y = 0; y < total_x_blocks; y++){
+            // if(x-1 == h_middle && y+1 == w_middle){
+            //     str_board += "<div class='block white' id='"+x+"_"+y+"'></div>";
+            // } else {
+                
+            // }
+            str_board += "<div class='block black' id='"+x+"_"+y+"'></div>";
+            
+        } 
+        str_board += "</div>";
+
+    }
+
+    board.html(str_board)
+
+}
+
+
+
+function move_ant(hack){
+
+    if(!pause || hack === true){
+        
+
+        current_block = $("#" + ant_pos[0]/block_pxls + "_" + ant_pos[1]/block_pxls );
+
+        if(current_block.attr("class") == "block white"){
+            current_block.attr("class", "block black");
+            change_ant_dir(false)
+        } else {
+            current_block.attr("class", "block white");
+            change_ant_dir(true)
+        }
+        
+        switch(ant_dir){
+            case directions.UP:
+                ant_pos[0] += block_pxls;
+            break;
+            case directions.RIGHT:
+                ant_pos[1] += block_pxls;
+            break;
+            case directions.DOWN:
+                ant_pos[0] -= block_pxls;
+            break;
+            case directions.LEFT:
+                ant_pos[1] -= block_pxls;
+            break;
+        }
+
+        ant.css("top", ant_pos[0])
+        ant.css("left", ant_pos[1])
+        
+    }
+    
+    
+
+}
+
+setInterval(move_ant, 10)
+
+function change_ant_dir(dir){
+
+    // directions.RIGHT ==> true
+    if(ant_dir == directions.UP){
+        if(dir == true){
+            ant_dir = directions.RIGHT;
+        } else {
+            ant_dir = directions.LEFT;
+        }
+        ant.attr("class", ("block dir_" + ant_dir) );
+        return true;
+    }
+
+    if(ant_dir == directions.RIGHT){
+        if(dir == true){
+            ant_dir = directions.DOWN;
+        } else {
+            ant_dir = directions.UP;
+        }
+        ant.attr("class", ("block dir_" + ant_dir) );
+        return true;
+    }
+
+    if(ant_dir == directions.DOWN){
+        if(dir == true){
+            ant_dir = directions.LEFT;
+        } else {
+            ant_dir = directions.RIGHT;
+        }
+        ant.attr("class", ("block dir_" + ant_dir) );
+        return true;
+    }
+
+    if(ant_dir == directions.LEFT){
+        if(dir == true){
+            ant_dir = directions.UP;
+        } else {
+            ant_dir = directions.DOWN;
+        }
+        ant.attr("class", ("block dir_" + ant_dir) );
+        return true;
+    }
+
+}
+
+
+$(document).keypress(function(e) {
+    console.log(e.which);
+    if(e.which == 97)   change_ant_dir(true);   // a
+    if(e.which == 100)  change_ant_dir(false);  // d
+    if(e.which == 119)  move_ant(true);             // w
+    if(e.which == 32)   pause = !pause;         // espace
+    if(e.which == 114)  ant_speed = (ant_speed/2 >= 1) ? ant_speed /= 2 : ant_speed; // r
+    if(e.which == 102)  ant_speed *= 2;        // f
+});
+

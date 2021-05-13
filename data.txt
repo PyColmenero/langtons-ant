@@ -1,0 +1,1 @@
+SELECT * FROM `users_data` WHERE ipUser != "2a01:c50f:d541:bf00:d60:b120:6a21:2fef" AND ipUser != "95.22.239.192" ORDER BY ipUser

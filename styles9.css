@@ -1,0 +1,249 @@
+
+body, html{
+    margin: 0;
+    
+    background-color: whitesmoke;
+}
+
+#canvas-fund * {
+    -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+#canvas-fund{
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+    canvas{
+        display: block;
+    }
+    #stadistics{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: .2rem;
+        background-color: whitesmoke;
+        z-index: 2;
+    }
+    #controls{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 1rem;
+        z-index: 2;
+    }
+    table *, #controls-explication *{
+        font-family: 'Poppins', sans-serif;
+        font-weight: 100;
+        font-size: .8rem;
+    }
+    
+        .control-button{
+            background-color: whitesmoke;
+            width: 3rem;
+            height: 3rem;
+            border: 2px solid rgb(160, 86, 86);
+            display: flex;
+            align-items: center;
+            text-align: center;
+            
+        }
+        th p, .control-button p{
+            width: 100%;
+        }
+        
+        .control-button img{
+            width: 40%;
+            margin: 0 auto;
+        }
+        #zoom_in img, #zoom_out img{
+            width: 60%;
+            margin: 0 auto;
+        }
+        .draw{
+            width: calc(6rem + 8px);
+        }
+        #speed-btn, #speed-btn-i{
+            height: calc(6rem + 8px) !important;
+            position: relative;
+        }
+            #speed-slider, #speed-btn-i input{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-90deg) ;
+                width: 6rem;
+            }
+            #speed-slider::-webkit-slider-thumb {
+                -webkit-appearance: none; /* Override default look */
+                appearance: none;
+                width: 25px; /* Set a specific slider handle width */
+                height: 25px; /* Slider handle height */
+                background: #008704; /* Green background */
+                cursor: pointer; /* Cursor on hover */
+              }
+              
+            #speed-slider::-moz-range-thumb {
+                background-color: red;
+            }   
+        .control-button label, .control-button label{
+            display: block;
+            font-size: 1.3rem !important;
+            font-weight: 900 !important;
+        }
+
+    #open_instructions{
+        position: absolute;
+        bottom: 0;
+        background-color: whitesmoke;
+        color: black;
+        padding: .5rem;
+        display: none;
+    }
+        #open_instructions p{
+            margin: 0;
+            font-size: .8rem;
+        }
+    #close_instructions{
+        display: none;
+    }
+    #change_ant_skin{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 1rem;
+        z-index: 2;
+    }
+        #real_ant{
+            background-color: whitesmoke;
+            width: 4rem;
+            height: 4rem;
+            border: 2px solid rgb(160, 86, 86);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        #real_ant img{
+            width: 66%;
+            margin: 0 auto;
+        }
+        
+#controls-explication{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    z-index: 2;
+}
+    #controls-explication > div{
+        background-color: rgb(255, 255, 255);
+        padding: .5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.14);
+    }
+        .buttons{
+            display: flex;
+        }
+        #controls-explication .control-button{
+            margin: 2px;
+        }
+
+#ants{
+    width: 100%;
+    height: 0;
+}
+.ant{
+    position: absolute;
+    z-index: 1;
+}
+.down{transform: rotate(180deg);}
+.right{transform: rotate(90deg);}
+.left{transform: rotate(-90deg);}
+
+
+section{
+    width: 80%;
+    margin: 2rem auto;
+    text-align: justify;
+}
+
+    
+@media screen and (max-device-aspect-ratio: 1/1) {
+    body,html{
+        background-color: black;
+        
+        overflow: hidden;
+    }
+    #canvas-fund{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    #real_ant{
+        width: 3rem;
+        height: 3rem;
+    }
+    #change_ant_skin{
+        margin: .5rem;
+    }
+
+
+    #open_instructions{
+        display: block;
+    }
+    section{
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 0 ;
+        
+        display: none;
+        z-index: 3;
+    }
+        section > div{
+            width: 90%;
+            height: 70vh;
+            margin: 10vh auto;
+
+            background-color: whitesmoke;
+
+            overflow-y: scroll;
+        }
+            #controls-explication{
+                padding: 1rem;
+                display: block;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                z-index: 2;
+            }
+                #controls-explication > img{
+                    width: 10%;
+                    margin-left: 90%;
+                    margin-bottom: 1rem;
+                    display: block;
+                }
+        section > div > p{
+            padding: 1rem;
+            font-size: .8rem;
+        }
+
+        h6{
+            color: #c9c9c9;
+        }
+}
