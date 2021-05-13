@@ -3,9 +3,9 @@ La hormiga de Langton es una máquina de Turing universal bidimensional con un c
 ![main-image](https://acolmenero.xyz/ant/media/readme/main.jpg)
 
 ## Para moverte por el mapa
-![main-image](https://acolmenero.xyz/ant/media/arrow.svg)
-## Para hacer zoom-in y zoom-out
 ![main-image](https://acolmenero.xyz/ant/media/readme/arrow.png)
+## Para hacer zoom-in y zoom-out
+![main-image](https://acolmenero.xyz/ant/media/readme/zoom-in.png)
 ![main-image](https://acolmenero.xyz/ant/media/readme/zoom-out.png)
 ## Para que la hormiga siga o pare
 ![main-image](https://acolmenero.xyz/ant/media/readme/play.png)
