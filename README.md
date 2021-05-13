@@ -13,3 +13,5 @@ La hormiga de Langton es una máquina de Turing universal bidimensional con un c
 ## Para cambiar el aspecto de la hormiga
 ![main-image](https://acolmenero.xyz/ant/media/readme/ant.png)
 ![main-image](https://acolmenero.xyz/ant/media/readme/red_square.png)
+## Para dar un solo paso si está parada
+![main-image](https://acolmenero.xyz/ant/media/readme/single.png)
